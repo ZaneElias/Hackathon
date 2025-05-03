@@ -9,3 +9,5 @@ langdetect>=1.0.9
 requests>=2.31.0
 python-dotenv>=1.0.0
 google-cloud-webrisk>=1.8.0  # For URL checking
+huggingface_hub==0.19.4
+faster-whisper==0.10.0
