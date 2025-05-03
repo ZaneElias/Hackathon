@@ -1,5 +1,7 @@
 # voice_utils.py
+from huggingface_hub import hf_hub_download
 import os
+from faster_whisper import WhisperModel
 import sys
 import hashlib
 import tempfile
@@ -57,12 +59,20 @@ class AudioCache:
 # ===== AUDIO TRANSCRIBER =====
 class AudioTranscriber:
     def __init__(self):
-        self.device = "cuda" if torch.cuda.is_available() else "cpu"
+        # REPLACE THIS PART
+        # Old code: MODEL_SIZE = "tiny"
+        
+        # New code for Hugging Face
+        model_path = hf_hub_download(
+            repo_id="ZaneElias/scamshield-whisper",
+            filename="ggml-model-whisper-base.bin",
+            cache_dir="models"
+        )
+        
         self.model = WhisperModel(
-            MODEL_SIZE,
-            device=self.device,
-            compute_type="int8",
-            download_root=os.path.join(os.path.dirname(__file__), "models")
+            model_path,  # Use downloaded model
+            device="cpu",
+            compute_type="int8"
         )  # Closing parenthesis added here
         print(f"Initialized transcriber on device: {self.device.upper()}")
 
