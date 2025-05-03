@@ -1,6 +1,7 @@
 # app.py - COMPLETE VERSION WITH URL CHECKING
 import streamlit as st
 from voice_utils import transcribe_audio, speak_text
+from huggingface_hub import login
 import tempfile
 import os
 import re
@@ -8,6 +9,8 @@ import requests
 from typing import Tuple
 from langdetect import detect, LangDetectException
 from dotenv import load_dotenv
+login(token=st.secrets.HUGGINGFACE_TOKEN)
+
 
 # Load environment variables
 load_dotenv()
@@ -165,6 +168,12 @@ def main():
                     speak_text("Dangerous URL detected", lang_code)
                 else:
                     st.success("✅ Safe URL")
+                    speak_text("This URL appears safe", lang_code)
+            else:
+                st.warning("Please enter a URL")
+
+if __name__ == "__main__":
+    main()
                     speak_text("This URL appears safe", lang_code)
             else:
                 st.warning("Please enter a URL")
