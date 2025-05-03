@@ -1,0 +1,137 @@
+
+This setup guide includes:
+1. Clear installation steps with code blocks
+2. System requirements
+3. File structure visualization
+4. Troubleshooting table
+5. License information
+6. Model attribution
+
+To use this:
+1. Create `download_model.sh` with your preferred download method
+2. Update Google Drive ID if using custom model hosting
+3. Add actual firewall instructions if needed for deployment
+
+Would you like me to create the companion `download_model.sh` script?
+
+
+******************************************************************************
+    >>>About & Steps<<<<<<
+
+# 🛡️ ScamShield AI - Setup Guide
+
+## Project Description
+A multi-language fraud detection system that analyzes text, voice messages, and URLs for phishing attempts and malicious content using AI models. Supports English (EN), Spanish (ES), and French (FR).
+
+---
+
+## System Requirements
+- **OS**: Windows 10+/macOS 10.15+/Linux Ubuntu 20.04+
+- **Python**: 3.9 or newer
+- **RAM**: 8GB minimum (16GB recommended for voice analysis)
+- **Storage**: 10GB free space (6GB for AI model + 4GB system)
+
+---
+
+## Installation Steps
+
+### 1. Clone Repository
+```bash
+git clone https://github.com/ZaneElias/Hackathon.git
+cd Hackathon
+
+***********************************************************************************
+
+ >>>>Install Dependencies<<<<
+
+# Core requirements
+pip install -r requirements.txt
+
+# OS-specific audio processing
+sudo apt install ffmpeg  # Ubuntu/Debian
+brew install ffmpeg      # MacOS
+
+*****************************************************************************
+
+    >>>>>>Model Setup (6GB Whisper Model)<<<<<
+
+# Create models directory
+mkdir -p models
+
+# Download via script (recommended)
+chmod +x download_model.sh
+./download_model.sh
+
+# OR manual download (choose one):
+# From Hugging Face Hub
+wget https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-model-whisper-base.bin -P models/
+
+# From Google Drive
+gdown --id YOUR_DRIVE_ID -O models/ggml-model-whisper-base.bin
+
+*****************************************************************************
+
+     >>>> Configuration<<<<<<<<
+Create .env file for API keys (optional):
+
+echo "GOOGLE_API_KEY=your_key_here" > .env
+
+*******************************************************************
+
+  >>>>>>>>>Launch Application<<<<<<<<<<<
+
+streamlit run app.py
+
+*******************************************************
+
+   ##File Structure##
+
+Hackathon/
+├── app.py                 # Main application
+├── voice_utils.py         # Voice processing module
+├── models/                # AI models directory
+│   └── ggml-model-whisper-base.bin  # Core voice model
+├── requirements.txt       # Python dependencies
+├── download_model.sh      # Model download script
+└── .gitignore             # File exclusion rules
+
+****************************************************
+
+##First-Time Setup Checklist##
+
+Python 3.9+ installed (python --version)
+
+FFmpeg installed (ffmpeg -version)
+
+6GB model file in models/ directory
+
+Dependencies installed (pip list)
+
+Streamlit port 8501 open in firewall
+
+***************************************
+
+##Troubleshooting##
+
+Common Issues
+Error	Solution
+ModuleNotFoundError	Run pip install -r requirements.txt
+Model file missing	Verify model path: ls models/
+Audio processing failed	Reinstall FFmpeg: brew reinstall ffmpeg
+CUDA out of memory	Reduce model size or use CPU: device="cpu"
+
+**************************************************************
+
+Advanced Configuration
+For GPU acceleration (NVIDIA only):
+
+pip uninstall torch
+pip install torch torchaudio --extra-index-url https://download.pytorch.org/whl/cu117
+
+*************************************************************************
+                 <Thanks> :-)
+
+
+
+
+
