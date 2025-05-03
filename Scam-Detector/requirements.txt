@@ -1,0 +1,11 @@
+# requirements.txt - COMPLETE HACKATHON VERSION
+streamlit>=1.28.0
+faster-whisper>=1.0.0
+pyttsx3>=2.90  # Fallback TTS
+gTTS>=2.4.0    # Multi-language voice
+pygame>=2.5.0  # Audio playback
+torch>=2.2.0   # GPU support for Whisper
+langdetect>=1.0.9
+requests>=2.31.0
+python-dotenv>=1.0.0
+google-cloud-webrisk>=1.8.0  # For URL checking
