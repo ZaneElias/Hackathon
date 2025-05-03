@@ -1,36 +1,27 @@
-# Hackathon
-Multi-language scam detection app using AI and voice analysis
-# 🛡️ Scam Detector
+# 🛡️ ScamShield AI - Multi-Language Fraud Detection
 
-Real-time detection of phishing attempts, scam messages, and malicious URLs with multi-language support.
+![Demo Screenshot](screenshots/demo.png) <!-- Add your screenshot later -->
 
-![Demo Screenshot](screenshots/demo.png)
+A real-time scam detection system analyzing text, voice messages, and URLs for phishing attempts and malicious content. Supports English, Spanish, and French.
 
-## Features
-- Voice message transcription
-- URL safety checking
-- Multi-language support (EN/ES/FR)
-- Threat confidence scoring
-- Real-time text analysis
+[![Python](https://img.shields.io/badge/Python-3.9%2B-blue)](https://www.python.org/)
+[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-## Installation
-```bash
-git clone https://github.com/YOUR_USERNAME/scam-detector.git
-cd scam-detector
-pip install -r requirements.txt
-```
+## ✨ Features
+- **Voice Analysis** - Transcribe and analyze voice notes for scam patterns
+- **Text Scanning** - Detect phishing keywords and suspicious language
+- **URL Safety Check** - Identify malicious links using heuristic analysis
+- **Multi-Language** - Supports English (EN), Spanish (ES), French (FR)
+- **Threat Scoring** - Confidence-based risk assessment (0-100%)
 
-## Usage
-```bash
-streamlit run app.py
-```
+## 🚀 Quick Start
 
-## Tech Stack
+### Prerequisites
 - Python 3.9+
-- Streamlit (UI)
-- Faster-Whisper (Speech-to-Text)
-- gTTS (Text-to-Speech)
-- Langdetect
+- FFmpeg (for audio processing)
+```bash
+# Ubuntu/Debian
+sudo apt install ffmpeg
 
-## License
-[MIT](LICENSE)
+# MacOS
+brew install ffmpeg
